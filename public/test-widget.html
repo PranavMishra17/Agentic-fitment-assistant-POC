@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitment Assistant Widget Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0 0 30px 0;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .demo-section h2 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .demo-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .demo-card h3 {
+            margin: 0 0 15px 0;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .demo-card p {
+            color: #6c757d;
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+        }
+
+        .demo-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .demo-button:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .instructions {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .instructions h4 {
+            margin: 0 0 10px 0;
+            color: #0c5460;
+        }
+
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+            color: #0c5460;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-testing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-section {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <div class="header">
+        <nav class="nav">
+            <a href="/">🏠 Home</a>
+            <a href="/admin">📊 Admin</a>
+            <a href="/test">🧪 Widget Test</a>
+            <a href="/health">❤️ Health</a>
+            <a href="/api">🔌 API</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🚗 Widget Test Environment</h1>
+            <p>Live demonstration of the Fitment Assistant chat widget</p>
+            <div class="status-indicator status-ready">
+                <span>●</span> Widget Active
+            </div>
+        </div>
+
+        <!-- Demo Section -->
+        <div class="demo-section">
+            <h2>Interactive Widget Demo</h2>
+            <p>The chat widget is now active on this page. Look for the chat button in the bottom-right corner to start a conversation about wheel fitment!</p>
+
+            <div class="instructions">
+                <h4>🎯 Try these sample questions:</h4>
+                <ol>
+                    <li>"What wheels fit my BMW 3 Series?"</li>
+                    <li>"I need tires for my Honda Civic"</li>
+                    <li>"What's the difference between offset and backspacing?"</li>
+                    <li>"Help me choose wheels for my Ford Mustang"</li>
+                    <li>"What size tires should I get?"</li>
+                </ol>
+            </div>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3>
+                        <span>💬</span>
+                        Chat Features
+                    </h3>
+                    <p>Test the interactive chat functionality with hardcoded automotive fitment responses. The widget supports real-time messaging and maintains conversation context.</p>
+                    <button class="demo-button" onclick="openChatDemo()">Open Chat</button>
+                </div>
+
+                <div class="demo-card">
+                    <h3>
+                        <span>🎨</span>
+                        Theming
+                    </h3>
+                    <p>The widget adapts to the configured brand colors and styling. This demo uses the default theme with blue primary colors.</p>
+                    <button class="demo-button" onclick="showThemeInfo()">Theme Info</button>
+                </div>
+
+                <div class="demo-card">
+                    <h3>
+                        <span>📱</span>
+                        Responsive Design
+                    </h3>
+                    <p>Test the widget on different screen sizes. It automatically adapts for mobile devices with touch-friendly interactions.</p>
+                    <button class="demo-button" onclick="testResponsive()">Test Mobile</button>
+                </div>
+
+                <div class="demo-card">
+                    <h3>
+                        <span>📊</span>
+                        Analytics Tracking
+                    </h3>
+                    <p>All interactions are tracked for analytics. Check the admin dashboard to see session data and engagement metrics.</p>
+                    <button class="demo-button" onclick="window.open('/admin', '_blank')">View Analytics</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration Guide -->
+        <div class="demo-section">
+            <h2>Integration Guide</h2>
+            <p>To add this widget to any website, simply include the embed code:</p>
+
+            <div class="code-block">
+&lt;script src="https://cdn-fitment.pages.dev/widget.js" 
+        data-tenant="demo-tenant-123"&gt;&lt;/script&gt;
+            </div>
+
+            <div class="instructions">
+                <h4>📋 Setup Steps:</h4>
+                <ol>
+                    <li>Upload the <code>cdn-assets/*</code> files to Cloudflare Pages</li>
+                    <li>Create a tenant configuration in the admin dashboard</li>
+                    <li>Copy the generated embed code</li>
+                    <li>Paste the code before the closing <code>&lt;/body&gt;</code> tag</li>
+                    <li>The widget will automatically initialize</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="demo-section">
+            <h2>Technical Details</h2>
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3>Widget Configuration</h3>
+                    <p><strong>Tenant ID:</strong> demo-tenant-123</p>
+                    <p><strong>Position:</strong> bottom-right</p>
+                    <p><strong>Theme:</strong> Default blue</p>
+                    <p><strong>Features:</strong> Analytics enabled</p>
+                </div>
+
+                <div class="demo-card">
+                    <h3>API Endpoints</h3>
+                    <p><strong>Config:</strong> /api/config/{tenantId}</p>
+                    <p><strong>Chat:</strong> /api/chat/message</p>
+                    <p><strong>Analytics:</strong> /api/analytics/event</p>
+                    <p><strong>Sessions:</strong> /api/chat/session</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Fitment Assistant POC - Widget Test Environment</p>
+        <p>🚀 Ready for integration testing</p>
+    </div>
+
+    <!-- Widget Integration Script -->
+    <script src="https://cdn-fitment.pages.dev/widget.js" 
+            data-tenant="demo-tenant-123"></script>
+
+    <!-- Demo Helper Scripts -->
+    <script>
+        function openChatDemo() {
+            // Try to open the chat widget
+            const chatButton = document.querySelector('.fitment-widget .chat-button');
+            if (chatButton) {
+                chatButton.click();
+            } else {
+                alert('Widget is still loading. Please wait a moment and try again.');
+            }
+        }
+
+        function showThemeInfo() {
+            alert(`Current Theme Configuration:
+            
+Primary Color: #007bff
+Secondary Color: #6c757d
+Font Family: System fonts
+Border Radius: 8px
+Position: bottom-right
+
+You can customize these settings in the admin dashboard.`);
+        }
+
+        function testResponsive() {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            alert(`Responsive Testing:
+
+• Desktop: Full-sized chat window (350x500px)
+• Tablet: Adaptive sizing
+• Mobile: Full-width overlay with optimized touch targets
+
+Try resizing your browser window to see the responsive behavior!`);
+        }
+
+        // Widget status monitoring
+        let checkCount = 0;
+        const maxChecks = 10;
+
+        function checkWidgetStatus() {
+            const widget = document.querySelector('.fitment-widget');
+            const statusIndicator = document.querySelector('.status-indicator');
+            
+            if (widget) {
+                statusIndicator.className = 'status-indicator status-ready';
+                statusIndicator.innerHTML = '<span>●</span> Widget Loaded';
+                console.log('✅ Fitment widget loaded successfully');
+            } else if (checkCount < maxChecks) {
+                checkCount++;
+                setTimeout(checkWidgetStatus, 1000);
+            } else {
+                statusIndicator.className = 'status-indicator status-testing';
+                statusIndicator.innerHTML = '<span>●</span> Widget Loading...';
+                console.log('⚠️ Widget still loading or failed to load');
+            }
+        }
+
+        // Start monitoring after page load
+        setTimeout(checkWidgetStatus, 2000);
+
+        // Log page view for analytics
+        console.log('📊 Test page loaded - widget analytics should be tracking this session');
+    </script>
+</body>
+</html>

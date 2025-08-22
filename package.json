@@ -1,0 +1,41 @@
+{
+  "name": "fitment-assistant-poc",
+  "version": "1.0.0",
+  "description": "POC for white-label automotive fitment assistant with agentic LLM chat widget",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "build-admin": "node scripts/build-admin.js",
+    "start": "node server.js",
+    "dev-admin": "cd admin-dashboard && npm start",
+    "dev-full": "concurrently \"npm run dev\" \"npm run dev-admin\"",
+    "prepare-cdn": "echo 'Upload cdn-assets/* to Cloudflare Pages'",
+    "setup": "npm install && cd admin-dashboard && npm install && cd .. && npm run build-admin"
+  },
+  "keywords": [
+    "fitment",
+    "automotive",
+    "chat",
+    "widget",
+    "white-label",
+    "multi-tenant"
+  ],
+  "author": "Fitment Assistant Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "winston": "^3.11.0",
+    "uuid": "^9.0.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

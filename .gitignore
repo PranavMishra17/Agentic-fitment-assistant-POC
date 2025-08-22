@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+admin-dashboard/node_modules/
+
+# Production builds
+admin-dashboard/build/
+public/admin/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Data storage
+data/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Runtime files
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
