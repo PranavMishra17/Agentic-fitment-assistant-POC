@@ -26,10 +26,10 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://fitment-assistant-wheelprice.pages.dev"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn-fitment.pages.dev"],
-      connectSrc: ["'self'", "http://localhost:3000", "https://cdn-fitment.pages.dev"]
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://fitment-assistant-wheelprice.pages.dev"],
+      connectSrc: ["'self'", "http://localhost:3000", "https://fitment-assistant-wheelprice.pages.dev"]
     }
   }
 }));
@@ -39,7 +39,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:3001', // React dev server
-    'https://cdn-fitment.pages.dev'
+    'https://fitment-assistant-wheelprice.pages.dev'
   ],
   credentials: true
 }));

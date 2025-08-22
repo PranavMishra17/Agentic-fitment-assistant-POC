@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Auto Dealership - Luxury Cars & Expert Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/><rect fill="%23ff6b35" x="100" y="250" width="200" height="100" rx="10"/><text x="200" y="310" text-anchor="middle" fill="white" font-size="20">🚗</text></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.3);
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .car-image {
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .car-info {
+            padding: 1.5rem;
+        }
+
+        .car-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .car-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .services {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">🏎️ Premium Auto</div>
+            <ul class="nav-links">
+                <li><a href="#inventory">Inventory</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#financing">Financing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Drive Your Dream Car Today</h1>
+            <p>Premium luxury vehicles with unmatched quality and service</p>
+            <a href="#inventory" class="cta-button">View Our Inventory</a>
+        </div>
+    </section>
+
+    <!-- Featured Cars -->
+    <section class="section" id="inventory">
+        <h2>Featured Vehicles</h2>
+        <div class="cars-grid">
+            <div class="car-card">
+                <div class="car-image">🏎️</div>
+                <div class="car-info">
+                    <h3>2024 BMW M4 Competition</h3>
+                    <div class="car-price">$89,900</div>
+                    <p>Twin-turbo V6, 503 HP, Premium package included</p>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-image">🚗</div>
+                <div class="car-info">
+                    <h3>2024 Mercedes C-Class AMG</h3>
+                    <div class="car-price">$67,500</div>
+                    <p>Luxury sedan with advanced driver assistance</p>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-image">🚙</div>
+                <div class="car-info">
+                    <h3>2024 Porsche Cayenne</h3>
+                    <div class="car-price">$78,200</div>
+                    <p>Performance SUV with sport package</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section">
+            <h2 style="color: white;">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🔧</div>
+                    <h3>Expert Maintenance</h3>
+                    <p>Factory-trained technicians for all luxury brands</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💰</div>
+                    <h3>Flexible Financing</h3>
+                    <p>Competitive rates and lease options available</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Extended Warranty</h3>
+                    <p>Comprehensive coverage for peace of mind</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🚗</div>
+                    <h3>Trade-In Program</h3>
+                    <p>Top dollar for your current vehicle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Premium Auto Dealership. All rights reserved.</p>
+        <p>📍 123 Luxury Drive, Premium City | 📞 (555) 123-AUTO | 💬 Chat with our experts!</p>
+    </footer>
+
+    <!-- Fitment Assistant Widget - Car Dealership Theme -->
+    <script src="https://fitment-assistant-wheelprice.pages.dev/widget.js" 
+            data-tenant="premium-auto-456"></script>
+</body>
+</html>

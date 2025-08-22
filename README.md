@@ -39,17 +39,76 @@ POC for white-label automotive fitment assistant with agentic LLM chat widget, m
 
 ## 📦 Quick Start
 
-### For Retailers (Widget Integration)
+### 1. Setup Development Environment
+```bash
+# Install dependencies
+npm install
+
+# Create environment file
+copy env.example .env
+# Edit .env with your Cloudflare credentials
+
+# Build admin dashboard
+npm run build-admin
+
+# Start development server
+npm run dev
+```
+
+### 2. Access the Platform
+- **Main Site**: http://localhost:3000
+- **Admin Dashboard**: http://localhost:3000/admin
+- **Widget Test**: http://localhost:3000/test
+- **Demo Sites**: 
+  - Car Dealership: http://localhost:3000/demo-car-dealership.html
+  - Wheel Shop: http://localhost:3000/demo-wheel-shop.html
+
+## 🚀 For Clients - Widget Integration
+
+### Simple 2-Line Integration
+Add this code to your website before the closing `</body>` tag:
+
 ```html
-<script src="https://cdn.fitment-ai.com/widget.js" 
+<!-- Replace 'your-tenant-id' with your actual tenant ID -->
+<script src="https://fitment-assistant-wheelprice.pages.dev/widget.js" 
         data-tenant="your-tenant-id"></script>
 ```
 
-### For Platform Administrators
-1. Clone repository
-2. Deploy backend to Heroku
-3. Upload CDN assets to Cloudflare Pages
-4. Configure tenant dashboard
+### Available Tenant IDs
+- `demo-tenant-123` - Demo Wheel Shop (Blue theme)
+- `premium-auto-456` - Premium Auto Dealership (Orange theme) 
+- `speed-wheels-789` - Speed Wheels Co (Green theme)
+
+### Widget Features
+- ✅ **Floating Cloud Design** - Appears as a professional chat bubble
+- ✅ **Custom Branding** - Colors, fonts, and messages match your brand
+- ✅ **Mobile Responsive** - Works perfectly on all devices
+- ✅ **Intelligent Responses** - AI-powered automotive fitment assistance
+- ✅ **Analytics Tracking** - Monitor customer engagement
+
+### Example Integration
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Auto Shop</title>
+</head>
+<body>
+    <h1>Welcome to My Auto Shop</h1>
+    <p>Your content here...</p>
+    
+    <!-- Fitment Assistant Widget -->
+    <script src="https://fitment-assistant-wheelprice.pages.dev/widget.js" 
+            data-tenant="demo-tenant-123"></script>
+</body>
+</html>
+```
+
+The widget will automatically:
+- Load with your custom theme
+- Position itself in the bottom-right corner
+- Provide intelligent automotive assistance
+- Track analytics for your admin dashboard
 
 ## 🛠️ Technology Stack
 
@@ -105,21 +164,29 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🚧 POC Status
 
-**Current State**: Proof of concept with:
+**✅ COMPLETED**: Full local development environment with:
 - ✅ White-label widget system
-- ✅ Multi-tenant configuration
+- ✅ Multi-tenant configuration  
 - ✅ Session logging & analytics
-- ✅ CDN deployment ready
-- ⏳ Hardcoded AI responses
-- ⏳ File-based storage
-- ⏳ Basic authentication
+- ✅ Admin dashboard (React)
+- ✅ Test environment
+- ✅ File-based storage
+- ✅ CDN-ready assets
+- ✅ Navigation & routing
+- ✅ Sample data
 
-**Production Roadmap**:
-- Database integration
-- Real LLM/MCP implementation
-- Advanced authentication
-- Enhanced security
+**🎯 CDN Deployment Required**:
+Upload these files to Cloudflare Pages:
+- `cdn-assets/widget.js`
+- `cdn-assets/chat-widget.js`  
+- `cdn-assets/widget.css`
+
+**🚀 Production Roadmap**:
+- Database integration (PostgreSQL/MongoDB)
+- Real LLM/MCP implementation  
+- Advanced authentication & security
 - Performance optimization
+- Docker containerization
 
 ## 📞 Support
 

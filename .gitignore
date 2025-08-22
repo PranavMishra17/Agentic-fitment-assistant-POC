@@ -8,12 +8,18 @@ public/admin/
 
 # Environment variables
 .env
+.env.local
+.env.production
+.env.example
 
 # Logs
 logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Data storage
+# Data storage (comment out if you want to commit sample data)
 data/
 
 # OS generated files
@@ -23,16 +29,22 @@ Thumbs.db
 # IDE files
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # Runtime files
 *.pid
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# Coverage directory
 coverage/
 
-# npm
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# CDN deployment files (keep these for deployment)
+# cdn-assets/ - DO NOT IGNORE
+env.example
