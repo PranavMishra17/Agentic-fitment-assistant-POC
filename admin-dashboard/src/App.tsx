@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import TenantList from './components/TenantList';
 import TenantEditor from './components/TenantEditor';
 import Analytics from './components/Analytics';
+import ChatLogs from './components/ChatLogs';
 import TestWidget from './components/TestWidget';
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/tenants/new" element={<TenantEditor />} />
           <Route path="/tenants/:tenantId/edit" element={<TenantEditor />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="/chat-logs" element={<ChatLogs />} />
           <Route path="/test" element={<TestWidget />} />
         </Routes>
       </Layout>

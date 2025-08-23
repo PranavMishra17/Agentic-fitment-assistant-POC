@@ -177,6 +177,15 @@ const TenantList: React.FC = () => {
                     </td>
                     <td>
                       <div className="d-flex gap-1">
+                        <a
+                          href={`/demo/${tenant.tenantId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-sm btn-outline"
+                          title="View demo page"
+                        >
+                          👁️
+                        </a>
                         <Link 
                           to={`/tenants/${tenant.tenantId}/edit`}
                           className="btn btn-sm btn-outline"

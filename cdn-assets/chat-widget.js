@@ -73,7 +73,7 @@
               <path d="M7 9H17V11H7V9ZM7 12H15V14H7V12Z" fill="currentColor"/>
             </svg>
           </div>
-          <div class="chat-button-text">Need Help?</div>
+          <div class="chat-button-text">Chat with ${this.config.brandName || 'WheelBro'}</div>
         </div>
 
         <!-- Chat Window -->
@@ -112,7 +112,7 @@
               </button>
             </div>
             <div class="input-footer">
-              <small>Powered by Fitment Assistant</small>
+              <small>Powered by <a href="https://wheelprice.com" target="_blank" style="color: var(--primary-color); text-decoration: none;">WheelPrice</a></small>
             </div>
           </div>
         </div>

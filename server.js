@@ -77,6 +77,163 @@ app.get('/test', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/test-widget.html'));
 });
 
+// Auto-generated tenant demo pages
+app.get('/demo/:tenantId', async (req, res) => {
+  try {
+    const { tenantId } = req.params;
+    const configService = require('./src/services/configService');
+    const config = await configService.getTenantConfig(tenantId);
+    
+    const demoHtml = generateTenantDemoPage(config);
+    res.send(demoHtml);
+  } catch (error) {
+    res.status(404).send(`
+      <h1>Demo Page Not Found</h1>
+      <p>Tenant "${req.params.tenantId}" not found.</p>
+      <p><a href="/admin">← Back to Admin</a></p>
+    `);
+  }
+});
+
+// Generate demo page HTML for a tenant
+function generateTenantDemoPage(config) {
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${config.brandName} - Demo Page</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: ${config.theme.fontFamily};
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        .header {
+            background: ${config.theme.primaryColor};
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: ${config.theme.borderRadius};
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: ${config.theme.primaryColor};
+            margin-bottom: 1rem;
+        }
+        .cta {
+            background: ${config.theme.primaryColor};
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: ${config.theme.borderRadius};
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        .widget-notice {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${config.theme.primaryColor};
+            color: white;
+            padding: 1rem;
+            border-radius: ${config.theme.borderRadius};
+            font-size: 0.9rem;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .content { padding: 0 1rem; }
+            .section { padding: 2rem; }
+            .widget-notice { position: relative; top: auto; right: auto; margin: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-notice">
+        💬 <strong>Widget Demo:</strong> Look for the chat button in the bottom-right corner!
+    </div>
+
+    <header class="header">
+        <h1>${config.brandName}</h1>
+        <p>Your trusted automotive partner</p>
+    </header>
+
+    <main class="content">
+        <section class="section">
+            <h2>Welcome to Our Demo Page</h2>
+            <p>This is an auto-generated demo page for <strong>${config.brandName}</strong>. The chat widget is active and ready to assist your customers with automotive fitment questions.</p>
+            <p>The widget uses your custom branding and theme colors, and will appear in the ${config.position.replace('-', ' ')} of the screen.</p>
+        </section>
+
+        <section class="section">
+            <h2>Widget Configuration</h2>
+            <ul style="margin-left: 2rem;">
+                <li><strong>Brand:</strong> ${config.brandName}</li>
+                <li><strong>Theme Color:</strong> ${config.theme.primaryColor}</li>
+                <li><strong>Position:</strong> ${config.position}</li>
+                <li><strong>Font:</strong> ${config.theme.fontFamily}</li>
+                <li><strong>Status:</strong> ${config.enabled ? '✅ Active' : '❌ Disabled'}</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Try the Chat Widget</h2>
+            <p>Click the chat button to test the fitment assistant. Try asking questions like:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>"What wheels fit my BMW 3 Series?"</li>
+                <li>"I need tires for my Honda Civic"</li>
+                <li>"Help me choose wheels for my Ford Mustang"</li>
+                <li>"What's the difference between offset and backspacing?"</li>
+            </ul>
+            <a href="/admin/tenants/${config.tenantId}/edit" class="cta">Edit Widget Settings</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 ${config.brandName}. Demo page powered by WheelPrice Fitment Assistant.</p>
+    </footer>
+
+    <!-- Widget Integration -->
+    <script src="https://fitment-assistant-wheelprice.pages.dev/widget.js" 
+            data-tenant="${config.tenantId}"></script>
+</body>
+</html>
+  `;
+}
+
 // Home page with navigation
 app.get('/', (req, res) => {
   res.send(`

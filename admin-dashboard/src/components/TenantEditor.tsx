@@ -368,14 +368,29 @@ const TenantEditor: React.FC = () => {
                 <div className="code-block" style={{ fontSize: '12px' }}>
                   {embedCode.replace('https://cdn-fitment.pages.dev', 'https://fitment-assistant-wheelprice.pages.dev')}
                 </div>
-                <button
-                  className="btn btn-sm btn-outline"
-                  onClick={() => navigator.clipboard.writeText(embedCode)}
-                >
-                  📋 Copy Code
-                </button>
+                <div className="d-flex gap-1">
+                  <button
+                    className="btn btn-sm btn-outline"
+                    onClick={() => navigator.clipboard.writeText(embedCode)}
+                  >
+                    📋 Copy Code
+                  </button>
+                  {isEditing && (
+                    <a
+                      href={`/demo/${tenantId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-sm btn-primary"
+                    >
+                      👁️ View Demo
+                    </a>
+                  )}
+                </div>
                 <div className="form-help mt-2">
                   Paste this code before the closing &lt;/body&gt; tag on your website.
+                  {isEditing && (
+                    <><br/>Or <a href={`/demo/${tenantId}`} target="_blank" rel="noopener noreferrer">view the auto-generated demo page</a> to test your widget.</>
+                  )}
                 </div>
               </div>
             </div>

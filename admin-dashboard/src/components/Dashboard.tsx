@@ -35,13 +35,25 @@ const Dashboard: React.FC = () => {
       const totalTenants = tenants.length;
       const activeTenants = tenants.filter((t: any) => t.enabled).length;
 
-      // For now, set placeholder values for sessions and messages
-      // In a real implementation, you'd aggregate this from all tenants
+      // Get actual stats from all tenants
+      let totalSessions = 0;
+      let totalMessages = 0;
+      
+      for (const tenant of tenants) {
+        try {
+          const statsResponse = await axios.get(`/api/chat/tenant/${tenant.tenantId}/stats`);
+          totalSessions += statsResponse.data.totalSessions || 0;
+          totalMessages += statsResponse.data.totalMessages || 0;
+        } catch (error) {
+          console.warn(`Could not load stats for tenant ${tenant.tenantId}`);
+        }
+      }
+
       setStats({
         totalTenants,
         activeTenants,
-        totalSessions: 0, // Will be calculated from actual session data
-        totalMessages: 0  // Will be calculated from actual session data
+        totalSessions,
+        totalMessages
       });
     } catch (error: any) {
       console.error('Error loading dashboard data:', error);
